@@ -1,5 +1,4 @@
 import { Bin } from "./types";
-import packageJson from "../package.json";
 
 const binUrlPattern = /^https:\/\/bin\.scarsz\.me\/(?<uuid>[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})#(?<key>[0-9a-zA-Z]{32})$/;
 
@@ -16,7 +15,7 @@ export async function get(uuid: string, key: string): Promise<Bin | null> {
     if (window) url = `https://corsproxy.io/?${encodeURIComponent(url)}`;
     const res = await fetch(url, {
         headers: {
-            "User-Agent": `npm-scarsz-bin/${packageJson.version} (https://github.com/J-295/npm-scarsz-bin)`
+            "User-Agent": `npm-scarsz-bin (https://github.com/J-295/npm-scarsz-bin)`
         }
     });
     if (res.status === 404) return null;
