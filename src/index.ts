@@ -1,2 +1,3 @@
-export { get, getUrl } from "./get";
-export { Bin } from "./types";
+export { getUrl, get } from "./get";
+export { post } from "./post";
+export { BinInit, Bin } from "./types";

@@ -19,7 +19,7 @@ export async function get(uuid: string, key: string): Promise<Bin | null> {
     const data: Bin = await res.json();
 
     /* decrypt */
-    const cryptoKey = await importKey(key);
+    const cryptoKey = await importDecryptKey(key);
     if (data.description) data.description = await decrypt(data.description, cryptoKey);
     for (const file of data.files) {
         file.name = await decrypt(file.name, cryptoKey);
@@ -31,7 +31,7 @@ export async function get(uuid: string, key: string): Promise<Bin | null> {
     return data;
 }
 
-function importKey(key: string) {
+function importDecryptKey(key: string) {
     return crypto.subtle.importKey(
         "raw",
         new TextEncoder().encode(key),
