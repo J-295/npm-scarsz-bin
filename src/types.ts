@@ -1,3 +1,4 @@
+/** The data used to create a bin. */
 export type BinInit = {
     /** Bin files. */
     files: {
@@ -21,6 +22,7 @@ export type BinInit = {
     expiration?: number;
 };
 
+/** The data from the server for an existing bin. */
 export type Bin = {
     /** Number of GET requests made to this bin. */
     hits: number;

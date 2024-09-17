@@ -1,5 +1,6 @@
 import { BinInit } from "./types";
 
+/** Encrypts and posts a bin. */
 export async function post(data: BinInit) {
     const payload = structuredClone(data);
 
