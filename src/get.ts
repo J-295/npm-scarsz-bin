@@ -14,7 +14,7 @@ export async function get(uuid: string, key: string): Promise<Bin | null> {
     /* fetch */
     let url = `https://bin.scarsz.me/v1/${encodeURIComponent(uuid)}.json`;
     // bypass bin.scarsz.me not allowing CORS in browsers
-    if (window) url = `https://corsproxy.io/?${encodeURIComponent(url)}`;
+    if (typeof window !== "undefined") url = `https://corsproxy.io/?${encodeURIComponent(url)}`;
     const res = await fetch(url);
     if (res.status === 404) return null;
     if (res.status !== 200) throw new Error(`Unexpected HTTP status: ${res.status}`);
